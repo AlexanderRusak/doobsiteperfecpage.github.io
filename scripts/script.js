@@ -10,13 +10,16 @@ $(document).ready(function () {
       });
     }
   });
+  let isReloaded;
   $(window).resize(() => {
+    
     if ($(window).width() <= "768") {
       $("header nav .navigation-menu-bar ").css("display", "flex");
-
+      isReloaded=true;
     }
-    else{
-      location.reload();//ломался слик,это костыль
+    if($(window).width() > "768" && (isReloaded==true)){
+        window.location.reload();
+        isReloaded=false;
     }
 
   })
@@ -30,7 +33,6 @@ $('.your-class').slick({
   speed: 300,
   adaptiveHeight: false,
   variableWidth: false,
- 
   responsive: [
    
     {
